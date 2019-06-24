@@ -1,8 +1,12 @@
 # Day-Tripper
+Day Tripper makes last minute plans a breeze, providing recommended activities based on location and weather.
 
-The yelp-cat-search will use three arrays to find the appropriate searh categories to pass to the yelp api.
-The first array simply consists of activy setting categories, i.e. indooor, outdor, of both.
-Based of the selected activity setting an array is searched for broad ranges of categories appropriate to the selected setting, i.e. Arts/Entertainment, Museums.
-A third array links the selected category to the relevant search search terms defined in the yelp API, i.e.  "artmuseum", "planetarium".
+## [Try it out!]()
 
-The app is built initially to list the final yelp search terms on a web page. In the end the code is expected to be incorporated into the Day Tripper app and the yelp API calls used for it.
+## How it Works
+-----
+First, users log in using Firebase's login functionality, and enter their zipcode.
+
+Next they are directed to the homepage. Information from openweather is translated into suggestions such as whether you need a coat, and a list of possible activities as displayed based on liklihood of precipitation.
+
+Once a user selects categories they're interested in, the app makes a call to yelp API and displays the results with relevant information. These can be saved into the user's personal list for convenience. 
