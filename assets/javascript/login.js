@@ -4,13 +4,15 @@ $(document).ready(function () {
 
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyDMrNIM1I6SatTgZfcEcc6rDUsGCNOmBNg",
-        authDomain: "login-test-fe7e7.firebaseapp.com",
-        databaseURL: "https://login-test-fe7e7.firebaseio.com",
-        projectId: "login-test-fe7e7",
-        storageBucket: "login-test-fe7e7.appspot.com",
-        messagingSenderId: "1052759447469"
-    };
+        apiKey: "AIzaSyDIEma_nP9FJGag3YFOML3H1ESCYBD5yf0",
+        authDomain: "daytripper-e7379.firebaseapp.com",
+        databaseURL: "https://daytripper-e7379.firebaseio.com",
+        projectId: "daytripper-e7379",
+        storageBucket: "",
+        messagingSenderId: "284614251696",
+        appId: "1:284614251696:web:94ffb5ae17e09e4f"
+      };
+
     firebase.initializeApp(config);
     var database = firebase.database();
 
