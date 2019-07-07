@@ -2,121 +2,191 @@
 <html lang="en-us">
 
 <head>
+    <meta charset="utf-8">
+    <!--set viewport for responsive design-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link to bootstrap stylesheet-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!--link to our stylesheet-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--link to google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
 
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Day Tripper</title>
-
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-  <!-- Bootstrap CDN-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-  <!-- Firebase Reference -->
-  <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-
-  <link rel="stylesheet" href="assets\css\style.css">
-
-      <!--link to google fonts-->
-      <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
 
 </head>
 
 <body>
-  <div id="background"></div>
-  <!-- Sign-Up Modal-->
-  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
 
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Sign-Up</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <div id="background"></div>
+    <div class="container">
+        <nav class="navbar navbar-light justify-content-between">
+            <a class="navbar-brand" id="logo">Daytripper</a>
+            <div>
+                <button type="button" id="zipcodeButton" class="btn btn-outline-secondary orange" data-toggle="modal"
+                    data-target="#zipcodeModal">Update Location</button>
+
+                <button type="button" class="btn btn-primary pink" data-toggle="modal" data-target="#myListModal"
+                    id="myListButton">
+                    My List
+                </button>
+            </div>
+        </nav>
+
+        <div class="jumbotron bg-white">
+
+            <div class="welcomeButtons">
+
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <img id="welcomeWeather">
+                    </div>
+
+
+                    <div class="col-md-6 text-left">
+                        <h2 class="city"></h2><br>
+                        <div class="temp3">Temperature: </div>
+                        <div class="conditions">Current Conditions: </div>
+
+                        <div class="clothingSuggestion">
+                            <div class="suggestDay"></div>
+                            <img id="topsIcon">
+                            <img id="bottomsIcon">
+                        </div>
+                        <!-- <div class="suggestDay">Suggestion: </div> -->
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="suggestion">
+                            <h2 class="display-4"></h2>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-body">
+                            <div class="collapse show" id="category-buttons">
+
+                                <div class="row">
+                                    <div id="categories-1" class="col-md-12">
+                                        <p class="lead"><em>How about..</em></p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row pb-4">
+                                    <div id="categories-2" class="col-md-12">
+                                        <hr class="my-4">
+                                        <p>Or... </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success" type="button" data-toggle="collapse"
+                                        data-target="#category-buttons" aria-expanded="true"
+                                        aria-controls="category-buttons" id="submit">
+                                        Find something to do!
+
+                                    </button>
+                                    <div class="loading hidden">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div id="results" class="col-md-12">
+
+                </div>
+
+
+            </div>
+
         </div>
 
-        <div class="modal-body">
-          <div id="alertArea" class="invisible">
-            <div id="alert" class="alert alert-primary" role="alert">
-            </div>
-          </div>
 
-          <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="txtEmailSgu" aria-describedby="emailHelp"
-                placeholder="Enter email">
-            </div>
 
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="textPasswordSgu" placeholder="Password">
-              <br>
-              <button id="btnsignUp" type="submit" class="btn btn-primary">Sign Up</button>
-            </div>
-          </form>
 
+
+
+        <!-- MyList Modal -->
+        <div class="modal fade" id="myListModal" tabindex="-1" role="dialog" aria-labelledby="myListTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myListTitle">My List</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="myList">
+                        <span id="emptyList">You don't have anything saved!</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- Zipcode Modal -->
+        <div class="modal fade" id="zipcodeModal" tabindex="-1" role="dialog" aria-labelledby="zipcodeTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="zipcodeTitle">Enter Zipcode</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      Welcome to Daytripper! To get suggestions on weather-appropriate activities in your area, please enter a 5-digit zipcode below.
+                        <form>
+                            <div class="form-group">
+                                <label for="zipcode" class="sr-only">Zipcode</label><br/>
+                                <input type="text" class="form-control" id="zipcode" aria-describedby="zipcodeHelp"
+                                    placeholder="Enter 5-digit zipcode">
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="updateZipcode">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-  </div>
-  </div>
 
-  <div class="container">
+    <!--link to jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--link to bootstrap javascript-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!--link to firebase-->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!--link to our javascript-->
 
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <h1 class="mb-4 mt-4 text-center" id="logo">Daytripper</h1>
-        <div id="locatInput" class="card mt-2">
-          <div class="card-header">
-            <h5 class="card-title">Let's Go</h5>
-          </div>
-          <div class="card-body">
-            <form>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address <span id="invalidEmail" class="warning hidden">- please enter a valid email address</span></label>
-                <input type="email" class="form-control" id="txtEmailLgn" aria-describedby="emailHelp"
-                  placeholder="Enter email" required>
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password <span id="invalidPassword" class="warning hidden">- incorrect password</span></label>
-                <input type="password" class="form-control" id="textPasswordLgn" placeholder="Password" required>
-
-
-              </div>
-
-              <div class="form-group">
-                <label for="exampleZipcode">Zipcode <span id="invalidZipcode" class="warning hidden">- please enter a 5-digit zipcode</span></label>
-                <input type="zipcode" class="form-control" id="zip-input" placeholder="Zipcode" required>
-                <br>
-                
-                <button class="btn btn-outline-secondary float-right m-2" id="sign-up-trig">Sign Up</button>
-                <button id="btnLogin" type="submit" class="btn btn-primary float-right m-2">Log in</button>
-              </div>
-
-            </form>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-</body>
-
-
-<script src="assets\javascript\login.js"></script>
+    <script src="assets/javascript/app.js"></script>
 
 </body>
 
