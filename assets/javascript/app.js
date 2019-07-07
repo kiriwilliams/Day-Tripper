@@ -545,7 +545,7 @@ $(document).ready(function () {
         function addLink(link) {
           //console.log("addLink");
           var linkTag = $("<a>");
-          linkTag.attr({ "href": link }).text("Open in Yelp");
+          linkTag.attr({ "href": link, "target":"_blank"}).text("Open in Yelp");
   
           return linkTag;
         }
