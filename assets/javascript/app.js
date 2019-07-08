@@ -44,12 +44,12 @@ $(document).ready(function () {
         var suggestionDay = response.list[0].main.temp;
 
         if (suggestionDay >= 60) {
-            $(".suggestDay").text("Woot!  Jen's kids can wear SHORTS today!");
+            $(".suggestDay").text("Looks like great weather today!");
             $("#topsIcon").attr("src", "assets/images/tshirt.png");
             $("#bottomsIcon").attr("src", "assets/images/shorts.png");
         }
         else {
-            $(".suggestDay").text("No shorts today, looks like you should bring a jacket also.. bummer.");
+            $(".suggestDay").text("Seems chilly. You might want to bring a jacket.");
             $("#topsIcon").attr("src", "assets/images/jacket.png");
             $("#bottomsIcon").attr("src", "assets/images/pants.png");
         }
@@ -57,7 +57,7 @@ $(document).ready(function () {
         var suggestionNight = response.list[0].main.temp;
 
         if (suggestionNight >= 60)
-            $(".suggestNight").text("Keep those shorts for later!");
+            $(".suggestNight").text("Warm night tonight.");
         else
             $(".suggestNight").text("Most likely you'll need a jacket or sweater later, looks a little chilly.");
 
@@ -174,8 +174,8 @@ $(document).ready(function () {
 
     //predefined categories (Al)
     var outdoorsActivities = ["Destinations", "Motor sports", "Nature", "Parks and Recreation", "Tours", "Water sports", "Wild Life Gaming", "Winter sports"];
-    var inOutActivities = ["Adventure sports", "Arts and Entertainment", "Clubs and Organizations", "Combat Sports", "Cultural", "Fitness", "Food and Drink", "Gaming", "Kid centric", "Mindfulness", "Participant sports", "Spectator sports"];
-    var indoorActivities = ["Movies", "Museums", "Participant Arts", "Spiritualistic"];
+    var inOutActivities = ["Adventure sports", "Arts and Entertainment", "Clubs and Organizations", "Combat Sports", "Cultural", "Fitness", "Gaming", "Kid centric", "Mindfulness", "Participant sports", "Spectator sports"];
+    var indoorActivities = ["Museums", "Participant Arts", "Spiritualistic"];
     var activityCategory = [
         { activity: "bungeejumping", category: "Adventure sports" },
         { activity: "climbing", category: "Adventure sports" },
