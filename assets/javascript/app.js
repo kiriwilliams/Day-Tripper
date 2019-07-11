@@ -44,7 +44,7 @@ $(document).ready(function () {
         var suggestionDay = response.list[0].main.temp;
 
         if (suggestionDay >= 60) {
-            $(".suggestDay").text("Looks like great weather today!");
+            $(".suggestDay").text("Looks like warm weather today!");
             $("#topsIcon").attr("src", "assets/images/tshirt.png");
             $("#bottomsIcon").attr("src", "assets/images/shorts.png");
         }
@@ -458,23 +458,16 @@ $(document).ready(function () {
         //add click listeners to each button
         btn.on("click", function () {
 
-            //if the button is unselected, select it and add to chosenCategories
+            //if the button is unselected, select it
             if ($(this).attr("data-selected") === "false") {
-
-
-                chosenCategories.push(name); //add to chosenCategories array
 
                 $(this).attr({ "data-selected": "true" }); //updated selected status
 
                 $(this).addClass("btn-primary text-white");  //add the selected class
             }
 
-            //if the button was already selected, unselect it and remove it from the chosenCategories
+            //if the button was already selected, unselect it
             else {
-
-                var index = chosenCategories.indexOf(name) //get index of name in chosenCategories array
-
-                chosenCategories.splice(index, 1); //remove that item from the array
 
                 $(this).attr("data-selected", "false");  //update selected status
 
@@ -610,8 +603,14 @@ $(document).ready(function () {
     async function yelpHandler() {
         var categoryCalls = []; //array to hold all subcategories associated with the broader categories available to users
 
+        const selectedButtons = $('*[data-selected="true"]');
+        let chosen = [];
+       [...selectedButtons].forEach(button => {
+            chosen.push(button.id);
+       });
+
         //go through categories that the user selected
-        chosenCategories.forEach(function (selected) {
+        chosen.forEach(function (selected) {
             var selected = selected;
             //go through all possible activity categories
             //this object is declared above in the predefined categories section
