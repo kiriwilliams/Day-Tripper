@@ -22,7 +22,6 @@ $(document).ready(function () {
 
     //SHARED GLOBAL VARIABLES
     var zipcode = localStorage.getItem("zip");
-    console.log("zipcode: " + zipcode);
     var lat = "";
     var long = "";
     var rainChance;
@@ -442,7 +441,7 @@ $(document).ready(function () {
             var results = [];
             results.push(poi);
             publishResults(results);
-            console.log(results);
+            // console.log(results);
         });
 
     }
