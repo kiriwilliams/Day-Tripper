@@ -480,6 +480,7 @@ $(document).ready(function () {
 
     }
 
+
     function publishResults(POIs) {
 
 
@@ -703,6 +704,11 @@ $(document).ready(function () {
 
         }
 
+    });
+
+    //To cancel search
+    $("#cancel").on("click", function(e){
+        location.reload();
     });
 
     /*** END YELP***/
